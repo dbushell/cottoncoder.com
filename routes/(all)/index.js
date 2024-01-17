@@ -6,8 +6,15 @@ export const order = 999;
 
 const themes = ['light', 'dark'];
 
-// Add policy to allow `data:` URIs in the stylesheet
 export const get = async (request, response, {platform}) => {
+  // Add strict security headers
+  if (request.url.startsWith(Deno.env.get('ORIGIN'))) {
+    response.headers.set(
+      'strict-transport-security',
+      'max-age=63072000; includeSubDomains; preload'
+    );
+  }
+  // Add policy to allow `data:` URIs in the stylesheet
   if (response?.headers?.get('content-type')?.includes('text/html')) {
     response.headers.append('x-img-src', 'data:');
     const theme = platform.cookies.get('theme')?.value;
