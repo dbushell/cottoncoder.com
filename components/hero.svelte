@@ -7,9 +7,9 @@
 <Island props={$$props}>
   <Hero heading={meta.name} description={meta.description} {...$$props}>
     <svelte:fragment slot="intro">
-      <p class="Hero__intro">
-        {@html meta.descriptionHTML}
-      </p>
+      <div class="Hero__intro">
+        <p>{@html meta.descriptionHTML}</p>
+      </div>
     </svelte:fragment>
   </Hero>
 </Island>
@@ -17,7 +17,7 @@
 <style>
   :global(.Hero) {
     --hero-min-height: calc((200 / 16) * 1rem);
-    --hero-max-height: calc((100dvh - var(--header-height)) * 0.4);
+    --hero-max-height: calc((100dvh - var(--header-height)) * 0.44);
   }
 
   :global(.Hero__heading) {
