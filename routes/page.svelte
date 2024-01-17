@@ -45,11 +45,15 @@
   import Hero from '@components/hero.svelte';
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
+  import * as meta from '../server/meta.json';
 
   const {pageIndex, pageLength, bookmarks} = getContext('data');
+
+  const heading = `Page ${pageIndex + 1}`;
+  const title = `${heading} ${meta.emoji} ${meta.name}`;
 </script>
 
-<Layout>
+<Layout {title}>
   <Hero />
   <Bookmarks {bookmarks} />
   <Pagination index={pageIndex} length={pageLength} />

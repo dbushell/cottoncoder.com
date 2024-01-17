@@ -3,7 +3,7 @@
   "short_name": "Cotton Coder",
   "icons": [
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/180x180.png",
       "sizes": "180x180",
       "type": "image/png"
     },

@@ -8,7 +8,7 @@
   import * as meta from '../server/meta.json';
 
   const heading = 'About';
-  const title = `${meta.name} ${meta.emoji} ${heading}`;
+  const title = `${heading} ${meta.emoji} ${meta.name}`;
 </script>
 
 <Layout {title}>
