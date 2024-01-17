@@ -1,0 +1,20 @@
+{
+  "name": "Cotton Coder",
+  "short_name": "Cotton Coder",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#f770ef",
+  "background_color": "#f770ef",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Cotton Coder",
+  "description": "The curated bookmark blog of web dev curiosities",
+  "descriptionHTML": "The curated <a href=\"/about\">bookmark blog</a> of web dev curiosities",
+  "url": "https://cottoncoder.com",
+  "tag": "v1.1",
+  "emoji": "☁️",
+  "footer": {
+    "menu": [
+      {
+        "name": "David Bushell",
+        "href": "https://dbushell.com"
+      },
+      {
+        "name": "GitHub",
+        "href": "https://github.com/dbushell/cottoncoder",
+        "target": "_blank"
+      },
+      {
+        "name": "RSS Feed",
+        "href": "/rss.xml",
+        "target": "_blank"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+/*
+!.gitignore
+!app.html
+!deno.json
+!mod.ts
+!README.md
+!tsconfig.json
+!components
+!routes
+!server
+!static
