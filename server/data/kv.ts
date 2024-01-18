@@ -102,35 +102,3 @@ export const getFormattedPage = async (
     bookmarks: await getFormattedBookmarks(pages[index])
   };
 };
-
-/*
-type BookmarkExport = BookmarkValue & {id: string};
-
-export const exportBookmarks = async () => {
-  const list = db.list<BookmarkValue>({prefix: ['bookmarks']});
-  const bookmarks = [];
-  for await (const item of list) {
-    const bookmark: BookmarkExport = {
-      ...item.value,
-      id: String(item.key[1])
-    };
-    bookmarks.push(bookmark);
-  }
-  return bookmarks;
-};
-
-export const importBookmarks = async (bookmarks: BookmarkExport[]) => {
-  for (const bookmark of bookmarks) {
-    await setBookmark(bookmark, bookmark.id);
-  }
-};
-
-importBookmarks(
-  JSON.parse(Deno.readTextFileSync('./bookmarks.json'))
-);
-
-Deno.writeTextFileSync(
-  './bookmarks.json',
-  JSON.stringify(await exportBookmarks())
-);
-*/
