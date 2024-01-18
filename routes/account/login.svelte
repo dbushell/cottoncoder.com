@@ -9,7 +9,7 @@
   import FormLogin from '@components/form-login.svelte';
   import FormLogout from '@components/form-logout.svelte';
   import {Container} from '@components/patchwork.js';
-  import * as meta from '../server/meta.json';
+  import * as meta from '../../server/meta.json';
 
   const url = getContext('url');
   const {user} = getContext('locals');
@@ -21,7 +21,7 @@
   <Container>
     <main class="Stack">
       {#if url.searchParams.has('redirect')}
-        <Redirect pathname={'/login/'} />
+        <Redirect pathname={'/account/login/'} />
       {:else}
         <h1>
           {#if user}Log out{:else}Log in{/if}

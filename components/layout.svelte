@@ -1,6 +1,7 @@
 <script>
+  import {Button, Footer} from '@components/patchwork.js';
   import Header from '@components/header.svelte';
-  import {Footer} from '@components/patchwork.js';
+  import IconRSS from '@components/icon/rss.svelte';
   import * as meta from '../server/meta.json';
 
   export let title = `${meta.name} ${meta.emoji}`;
@@ -15,7 +16,22 @@
 <div class="App">
   <Header />
   <slot />
-  <Footer menu={meta.footer.menu} />
+  <Footer menu={meta.footer.menu}>
+    <svelte:fragment slot="secondary">
+      <div class="flex gap-xs">
+        <Button slot="secondary" small label="Log in" href="/account/login/" />
+        <Button
+          icon
+          small
+          label="RSS Feed"
+          href="/rss.xml"
+          attr={{target: '_blank'}}
+        >
+          <IconRSS slot="icon" />
+        </Button>
+      </div>
+    </svelte:fragment>
+  </Footer>
 </div>
 
 <style>
@@ -83,5 +99,9 @@
   :global(q::after) {
     content: '”';
     font-weight: 200;
+  }
+
+  :global(.Footer .Button) {
+    white-space: nowrap;
   }
 </style>

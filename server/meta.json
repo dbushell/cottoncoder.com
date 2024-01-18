@@ -15,11 +15,6 @@
         "name": "GitHub",
         "href": "https://github.com/dbushell/cottoncoder",
         "target": "_blank"
-      },
-      {
-        "name": "RSS Feed",
-        "href": "/rss.xml",
-        "target": "_blank"
       }
     ]
   }

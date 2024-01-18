@@ -44,7 +44,7 @@ const githubLogout: DinoHandle = async (_req, _res, props) => {
   }
   // Delete session cookie
   props.platform.cookies.delete('session');
-  return redirect('/login/');
+  return redirect('/account/login/');
 };
 
 const githubLogin: DinoHandle = async (request, _res, props) => {
@@ -72,18 +72,18 @@ const githubLogin: DinoHandle = async (request, _res, props) => {
 const githubCallback: DinoHandle = async (request, _res, props) => {
   const url = new URL(request.url);
   if (url.searchParams.has('error')) {
-    return redirect('/login/?error=denied');
+    return redirect('/account/login/?error=denied');
   }
   // Validate state key
   const state = url.searchParams.get('state') ?? '';
   const stateKey = props.platform.cookies.get('state')?.value ?? '';
   if (!v4.validate(state) || !v4.validate(stateKey)) {
-    return redirect('/login/?error=expired');
+    return redirect('/account/login/?error=expired');
   }
   // Validate state value
   const stateValue = await kv.db.get<string>(['state', stateKey]);
   if (state !== stateValue?.value) {
-    return redirect('/login/?error=mismatch');
+    return redirect('/account/login/?error=mismatch');
   }
   // Delete temporary state
   await kv.db.delete(['state', stateKey]);
@@ -124,9 +124,9 @@ const githubCallback: DinoHandle = async (request, _res, props) => {
       expires: encryped.expires
     });
   } catch {
-    return redirect('/login/?error=token');
+    return redirect('/account/login/?error=token');
   }
-  return redirect('/login/?redirect=true');
+  return redirect('/account/login/?redirect=true');
 };
 
 const userFetchMap = new Map<string, Promise<JSON>>();
