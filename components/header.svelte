@@ -25,6 +25,9 @@
   };
 
   onMount(() => {
+    if ('serviceWorker' in window.navigator) {
+      window.navigator.serviceWorker.register('/sw.js');
+    }
     theme = document.documentElement.getAttribute('data-theme');
     if (!theme) {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
