@@ -19,12 +19,18 @@
   <Footer menu={meta.footer.menu}>
     <svelte:fragment slot="secondary">
       <div class="flex gap-xs">
-        <Button slot="secondary" small label="Log in" href="/account/login/" />
+        <Button
+          small
+          label="Log in"
+          href="/account/login/"
+          classes={['flex-shrink-0']}
+        />
         <Button
           icon
           small
           label="RSS Feed"
           href="/rss.xml"
+          classes={['flex-shrink-0']}
           attr={{target: '_blank'}}
         >
           <IconRSS slot="icon" />
