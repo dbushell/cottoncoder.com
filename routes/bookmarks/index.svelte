@@ -1,9 +1,13 @@
 <script context="module">
   export const pattern = '/:id/';
 
-  export const load = async (_request, {params, fetch}) => {
+  export const load = async (_req, {params, fetch}) => {
     try {
-      const response = await fetch(`/api/bookmarks/${params.id}/`);
+      const response = await fetch(`/api/bookmarks/${params.id}/`, {
+        headers: {
+          authorization: `Bearer ${Deno.env.get('CC_API_KEY')}`
+        }
+      });
       const data = await response.json();
       return {
         bookmark: data

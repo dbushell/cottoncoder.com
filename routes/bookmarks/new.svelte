@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '/';
 
-  export const load = async (_request, {locals}) => {
+  export const load = async (_req, {locals}) => {
     if (locals.admin !== true) {
       return new Response(null, {
         status: 302,

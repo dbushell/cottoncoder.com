@@ -1,15 +1,18 @@
 <script context="module">
-  export const load = async (_request, {fetch}) => {
+  export const load = async (_req, {fetch}) => {
     try {
-      const response = await fetch(`/api/bookmarks/page/0/`);
+      const response = await fetch(`/api/bookmarks/page/0/`, {
+        headers: {
+          authorization: `Bearer ${Deno.env.get('CC_API_KEY')}`
+        }
+      });
       const data = await response.json();
       return {
         pageIndex: data.index,
         pageLength: data.length,
         bookmarks: data.bookmarks
       };
-    } catch (err) {
-      console.error(err);
+    } catch {
       return {
         pageIndex: 0,
         pageLength: 0,
@@ -45,6 +48,14 @@
       </div>
     </Container>
   {/if}
-  <Bookmarks {bookmarks} />
+  {#if pageLength === 0}
+    <Container>
+      <div class="Alert">
+        <p>Website down for maintenance.</p>
+      </div>
+    </Container>
+  {:else}
+    <Bookmarks {bookmarks} />
+  {/if}
   <Pagination index={pageIndex} length={pageLength} />
 </Layout>

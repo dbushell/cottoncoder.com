@@ -55,6 +55,15 @@ export const handle: DinoHandle = async (request, response, props) => {
   let pattern: URLPattern;
   let match: URLPatternResult | null;
 
+  // Protect JSON API endpoints
+  if (
+    request.method === 'GET' &&
+    request.headers.get('authorization') !==
+      `Bearer ${Deno.env.get('CC_API_KEY')}`
+  ) {
+    return new Response(null, {status: 401});
+  }
+
   // Read or write bookmark
   pattern = new URLPattern('/api/bookmarks/:id/', request.url);
   match = pattern.exec(request.url);

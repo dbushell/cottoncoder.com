@@ -28,12 +28,16 @@
 </item>
 `;
 
-  export const load = async (request, {fetch}) => {
-    const response = await fetch(`/api/bookmarks/page/0/`);
+  export const load = async (_req, {fetch}) => {
+    const response = await fetch(`/api/bookmarks/page/0/`, {
+      headers: {
+        authorization: `Bearer ${Deno.env.get('CC_API_KEY')}`
+      }
+    });
     return response;
   };
 
-  export const get = async (request, response) => {
+  export const get = async (_req, response) => {
     const data = await response.json();
 
     let body = template;

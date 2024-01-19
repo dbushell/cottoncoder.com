@@ -2,7 +2,7 @@ export const pattern = '/';
 
 const themes = ['light', 'dark'];
 
-export const post = async (request, response, {platform}) => {
+export const post = async (request, _res, {platform}) => {
   try {
     const data = await request.json();
     if (!themes.includes(data.theme)) {

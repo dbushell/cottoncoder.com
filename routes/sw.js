@@ -1,6 +1,6 @@
 export const pattern = '.js';
 
-export const get = async (_request, response, {platform}) => {
+export const get = async (_req, response, {platform}) => {
   if (!(response instanceof Response)) {
     return response;
   }
