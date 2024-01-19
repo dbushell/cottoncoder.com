@@ -1,5 +1,15 @@
 <script context="module">
   export const pattern = '/';
+
+  export const get = (_req, response) => {
+    // Add CSP header for OAuth redirect
+    // required in Safari and Chromium but not Firefox
+    response.headers.append(
+      'x-form-action',
+      'https://github.com/login/oauth/authorize'
+    );
+    return response;
+  };
 </script>
 
 <script>
