@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "paths": {
-      "@data/*": ["./data/*"],
       "@components/*": ["./components/*"]
     },
     "moduleResolution": "bundler",
