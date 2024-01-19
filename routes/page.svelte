@@ -50,7 +50,7 @@
 
   const {pageIndex, pageLength, bookmarks} = getContext('data');
 
-  const heading = `Page ${pageIndex + 2}`;
+  const heading = `Page ${pageIndex + 1}`;
   const title = `${heading} ${meta.emoji} ${meta.name}`;
 </script>
 
