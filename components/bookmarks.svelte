@@ -13,7 +13,7 @@
 
 <style>
   .Bookmarks {
-    align-items: start;
+    align-items: stretch;
     container-name: bookmarks;
     container-type: inline-size;
     grid-row-gap: var(--space-m);

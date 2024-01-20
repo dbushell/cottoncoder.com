@@ -50,6 +50,7 @@
     display: grid;
     gap: var(--space-s);
     grid-template-columns: auto;
+    grid-template-rows: auto auto 1fr;
     padding: var(--space-m) var(--space-m-l);
   }
 
@@ -110,6 +111,7 @@
   }
 
   p {
+    align-self: end;
     color: oklch(var(--color-text-subtle));
     font-size: var(--step-0);
     font-weight: 250;
