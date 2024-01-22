@@ -1,0 +1,65 @@
+# cottoncoder.com
+# production compose file
+# copy and run from the parent directory
+
+# required .env vars:
+# GH_CLIENT_ID          - GitHub app client id
+# GH_CLIENT_SECRET      - GitHub app client secret
+# GH_ADMIN_IDS          - GitHub user ids (comma separated)
+# DENO_KV_ACCESS_TOKEN  - random string
+# CC_API_KEY            - random string
+# CF_TUNNEL_TOKEN       - Cloudflare tunnel token
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  denokv:
+    container_name: denokv
+    image: ghcr.io/denoland/denokv
+    command: --sqlite-path /data/denokv.sqlite serve --access-token ${DENO_KV_ACCESS_TOKEN}
+    restart: always
+    environment:
+      DENO_KV_ACCESS_TOKEN: ${DENO_KV_ACCESS_TOKEN}
+    ports:
+      - 4512:4512
+    volumes:
+      - ./data:/data
+    networks:
+      - backend
+
+  deno:
+    container_name: deno
+    image: denoland/deno:1.39.4
+    command: deno run --no-lock --unstable --allow-all /app/mod.ts
+    restart: always
+    depends_on:
+      - denokv
+    environment:
+      ORIGIN: https://cottoncoder.com
+      CC_BACKUP_PATH: /backup
+      DENO_KV_URL: http://denokv:4512
+      DENO_KV_ACCESS_TOKEN: ${DENO_KV_ACCESS_TOKEN}
+      GH_CLIENT_ID: ${GH_CLIENT_ID}
+      GH_CLIENT_SECRET: ${GH_CLIENT_SECRET}
+      GH_ADMIN_IDS: ${GH_ADMIN_IDS}
+    volumes:
+      - ./cottoncoder.com:/app:ro
+      - ./backup:/backup
+    networks:
+      - frontend
+      - backend
+
+  cloudflared:
+    container_name: cloudflared
+    image: cloudflare/cloudflared:latest
+    restart: always
+    depends_on:
+      - denokv
+      - deno
+    command: tunnel --no-autoupdate run --token=${CF_TUNNEL_TOKEN}
+    networks:
+      - frontend

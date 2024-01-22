@@ -2,6 +2,7 @@
 !.gitignore
 !app.html
 !deno.json
+!docker-compose.yml
 !mod.ts
 !README.md
 !tsconfig.json
