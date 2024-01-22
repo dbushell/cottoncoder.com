@@ -5,6 +5,7 @@ import type {DinoHandle, DinoPlatform} from 'dinossr';
 const getBookmark = async (id: string) => {
   const data = await kv.getBookmark(id);
   if (data) return Response.json(data);
+  return new Response(null, {status: 400});
 };
 
 const setBookmark = async (
@@ -37,12 +38,16 @@ const setBookmark = async (
 };
 
 const getPage = async (index: number) => {
-  const data = await kv.getFormattedPage(index);
-  return Response.json({
-    index: index,
-    length: data.length,
-    bookmarks: data.bookmarks
-  });
+  try {
+    const data = await kv.getFormattedPage(index);
+    return Response.json({
+      index: index,
+      length: data.length,
+      bookmarks: data.bookmarks
+    });
+  } catch {
+    return new Response(null, {status: 400});
+  }
 };
 
 export const handle: DinoHandle = async (request, response, props) => {
