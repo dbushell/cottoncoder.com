@@ -1,10 +1,15 @@
 {
   "name": "Cotton Coder",
+  "url": "https://cottoncoder.com",
+  "tag": "v1.3",
+  "emoji": "☁️",
   "description": "The curated bookmark blog of web dev curiosities",
   "descriptionHTML": "The curated <a href=\"/about/\">bookmark blog</a> of web dev curiosities",
-  "url": "https://cottoncoder.com",
-  "tag": "v1.2",
-  "emoji": "☁️",
+  "support": {
+    "text": "☁️ Please support this blog with a coffee sized tip!",
+    "url": "https://dbushell.com/tip/",
+    "label": "Support on Ko-fi"
+  },
   "footer": {
     "menu": [
       {
