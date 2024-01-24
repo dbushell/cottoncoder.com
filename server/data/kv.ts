@@ -53,12 +53,19 @@ export const listBookmarks = (cursor?: string) => {
   );
 };
 
+// TODO: better way to do pagination?
+// No count: https://github.com/denoland/deno/issues/18965
 export const getFormattedPageCursors = async () => {
   let cursor: string | undefined;
   const pages: Array<string | undefined> = [undefined];
   do {
     const list = listBookmarks(cursor);
     let next = await list.next();
+    if (next.done) {
+      // Last page is empty so remove it
+      pages.pop();
+      break
+    }
     while (!next.done) next = await list.next();
     cursor = list.cursor;
     if (cursor) pages.push(cursor);
