@@ -1,19 +1,11 @@
 <script context="module">
   export const pattern = '/:page(\\d+)/';
 
-  const redirect = (location) =>
-    new Response(null, {
-      status: 307,
-      headers: {
-        location
-      }
-    });
-
-  export const load = async (_req, {params, fetch}) => {
+  export const load = async (request, {params, fetch}) => {
     try {
       const page = Number.parseInt(params.page) - 1;
       if (page <= 0) {
-        return redirect('/');
+        return Response.redirect(new URL('/', request.url), 307);
       }
       const response = await fetch(`/api/bookmarks/page/${page}/`, {
         headers: {
@@ -21,7 +13,7 @@
         }
       });
       if (!response.ok) {
-        return redirect('/');
+        return Response.redirect(new URL('/', request.url), 307);
       }
       const data = await response.json();
       return {
