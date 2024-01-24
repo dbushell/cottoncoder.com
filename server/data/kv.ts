@@ -64,7 +64,7 @@ export const getFormattedPageCursors = async () => {
     if (next.done) {
       // Last page is empty so remove it
       pages.pop();
-      break
+      break;
     }
     while (!next.done) next = await list.next();
     cursor = list.cursor;
