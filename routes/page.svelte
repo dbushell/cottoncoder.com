@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '/:page(\\d+)/';
 
-  export const load = async (request, {params, fetch}) => {
+  export const load = async ({params, request, fetch, serverData}) => {
     try {
       const page = Number.parseInt(params.page) - 1;
       if (page <= 0) {
@@ -16,17 +16,13 @@
         return Response.redirect(new URL('/', request.url), 307);
       }
       const data = await response.json();
-      return {
-        pageIndex: data.index,
-        pageLength: data.length,
-        bookmarks: data.bookmarks
-      };
+      serverData.pageIndex = data.index;
+      serverData.pageLength = data.length;
+      serverData.bookmarks = data.bookmarks;
     } catch {
-      return {
-        pageIndex: 0,
-        pageLength: 0,
-        bookmarks: []
-      };
+      serverData.pageIndex = 0;
+      serverData.pageLength = 0;
+      serverData.bookmarks = [];
     }
   };
 </script>
@@ -40,7 +36,7 @@
   import {Container} from '@components/patchwork.js';
   import * as meta from '../server/meta.json';
 
-  const {pageIndex, pageLength, bookmarks} = getContext('data');
+  const {pageIndex, pageLength, bookmarks} = getContext('serverData');
 
   const heading = `Page ${pageIndex + 1}`;
   const title = `${heading} ${meta.emoji} ${meta.name}`;

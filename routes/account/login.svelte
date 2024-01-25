@@ -22,7 +22,7 @@
   import * as meta from '../../server/meta.json';
 
   const url = getContext('url');
-  const {user} = getContext('locals');
+  const {user} = getContext('serverData');
 
   const title = `Log in ${meta.emoji} ${meta.name}`;
 </script>

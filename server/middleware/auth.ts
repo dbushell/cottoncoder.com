@@ -144,7 +144,7 @@ const githubUser = async (platform: DinoPlatform) => {
     const decrypted: GitHubUser = JSON.parse(
       await secret.decryptText(user.value.encrypted, password)
     );
-    platform.locals.user = decrypted;
+    platform.serverData.user = decrypted;
     return;
   }
   const encrypted = await kv.db.get<EncryptedValue>(['token', session]);
@@ -180,7 +180,7 @@ const githubUser = async (platform: DinoPlatform) => {
       expires: new Date(Date.now() + expireIn)
     };
     await kv.db.set(['user', session], encryped, {expireIn});
-    platform.locals.user = data;
+    platform.serverData.user = data;
   } catch (err) {
     throw err;
   } finally {
@@ -195,9 +195,9 @@ export const handle: DinoHandle = async (request, response, props) => {
     try {
       await githubUser(props.platform);
       // @ts-ignore - TODO: fix types
-      const id = props.platform?.locals.user?.id;
+      const id = props.platform?.serverData.user?.id;
       if (ADMIN_IDS.includes(String(id))) {
-        props.platform.locals.admin = true;
+        props.platform.serverData.admin = true;
       }
     } catch {
       // Ignore...

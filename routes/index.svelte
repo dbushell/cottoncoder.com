@@ -1,5 +1,5 @@
 <script context="module">
-  export const load = async (_req, {fetch}) => {
+  export const load = async ({fetch, serverData}) => {
     try {
       const response = await fetch(`/api/bookmarks/page/0/`, {
         headers: {
@@ -7,17 +7,13 @@
         }
       });
       const data = await response.json();
-      return {
-        pageIndex: data.index,
-        pageLength: data.length,
-        bookmarks: data.bookmarks
-      };
+      serverData.pageIndex = data.index;
+      serverData.pageLength = data.length;
+      serverData.bookmarks = data.bookmarks;
     } catch {
-      return {
-        pageIndex: 0,
-        pageLength: 0,
-        bookmarks: []
-      };
+      serverData.pageIndex = 0;
+      serverData.pageLength = 0;
+      serverData.bookmarks = [];
     }
   };
 </script>
@@ -32,8 +28,7 @@
   import IconBookmark from '@components/icon/bookmark.svelte';
   import {Container, Button} from '@components/patchwork.js';
 
-  const {pageIndex, pageLength, bookmarks} = getContext('data');
-  const {admin} = getContext('locals');
+  const {admin, pageIndex, pageLength, bookmarks} = getContext('serverData');
 </script>
 
 <Layout>

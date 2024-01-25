@@ -17,7 +17,7 @@
   export let title;
   export let html;
 
-  const {admin} = getContext('locals');
+  const {admin} = getContext('serverData');
 </script>
 
 <article id="bookmark-{hash}">

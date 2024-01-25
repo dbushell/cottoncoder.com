@@ -1,8 +1,8 @@
 <script context="module">
   export const pattern = '/';
 
-  export const load = async (_req, {locals}) => {
-    if (locals.admin !== true) {
+  export const load = async ({serverData}) => {
+    if (serverData.admin !== true) {
       return new Response(null, {
         status: 302,
         headers: {

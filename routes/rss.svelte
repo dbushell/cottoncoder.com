@@ -28,7 +28,7 @@
 </item>
 `;
 
-  export const load = async (_req, {fetch}) => {
+  export const load = async ({fetch}) => {
     const response = await fetch(`/api/bookmarks/page/0/`, {
       headers: {
         authorization: `Bearer ${Deno.env.get('CC_API_KEY')}`

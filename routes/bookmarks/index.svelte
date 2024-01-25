@@ -1,18 +1,15 @@
 <script context="module">
   export const pattern = '/:id/';
 
-  export const load = async (_req, {params, fetch}) => {
+  export const load = async ({fetch, params, publicData}) => {
     try {
       const response = await fetch(`/api/bookmarks/${params.id}/`, {
         headers: {
           authorization: `Bearer ${Deno.env.get('CC_API_KEY')}`
         }
       });
-      const data = await response.json();
-      return {
-        bookmark: data
-      };
-    } catch (err) {
+      publicData.bookmark = await response.json();
+    } catch {
       return new Response(null, {
         status: 404
       });
@@ -27,8 +24,8 @@
   import FormBookmark from '@components/form-bookmark.svelte';
   import {Container} from '@components/patchwork.js';
 
-  const {bookmark} = getContext('data');
-  const {admin} = getContext('locals');
+  const {bookmark} = getContext('publicData');
+  const {admin} = getContext('serverData');
 </script>
 
 <Layout>

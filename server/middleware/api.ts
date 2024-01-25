@@ -11,9 +11,9 @@ const getBookmark = async (id: string) => {
 const setBookmark = async (
   id: string,
   request: Request,
-  {locals}: DinoPlatform
+  {serverData}: DinoPlatform
 ) => {
-  if (locals.admin !== true) {
+  if (serverData.admin !== true) {
     return new Response(null, {status: 401});
   }
   if (id === 'new') {
