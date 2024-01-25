@@ -4,7 +4,8 @@
 
 <script>
   import Layout from '@components/layout.svelte';
-  import {Container} from '@components/patchwork.js';
+  import IconRSS from '@components/icon/rss.svelte';
+  import {Button, Container} from '@components/patchwork.js';
   import * as meta from '../server/meta.json';
 
   const heading = 'About';
@@ -33,6 +34,11 @@
         <p>
           Basically anything web related or web adjacent that I find
           interesting.
+        </p>
+        <p>
+          <Button href="/rss.xml" label="Subscribe to RSS Feed">
+            <IconRSS slot="icon" />
+          </Button>
         </p>
         <h2>Disclaimer</h2>
         <p><strong>Click at your own risk!</strong></p>
