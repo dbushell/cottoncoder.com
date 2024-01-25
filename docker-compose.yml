@@ -33,8 +33,8 @@ services:
 
   deno:
     container_name: deno
-    image: denoland/deno:1.39.4
-    command: deno run --no-lock --unstable --allow-all /app/mod.ts
+    image: denoland/deno:1.40.0
+    command: deno run --no-lock --unstable-kv --allow-all /app/mod.ts
     restart: always
     depends_on:
       - denokv
