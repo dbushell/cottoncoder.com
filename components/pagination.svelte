@@ -1,7 +1,7 @@
 <script>
   import {Container, Button} from '@components/patchwork.js';
-  import ArrowLeft from '@components/icon/arrow-left.svelte';
-  import ArrowRight from '@components/icon/arrow-right.svelte';
+  import ArrowLeft from '@components/icons/arrow-left.svelte';
+  import ArrowRight from '@components/icons/arrow-right.svelte';
 
   export let index;
   export let length;

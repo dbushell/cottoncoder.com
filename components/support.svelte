@@ -1,6 +1,6 @@
 <script>
   import {Button} from '@components/patchwork.js';
-  import IconKofi from '@components/icon/kofi.svelte';
+  import IconKofi from '@components/icons/kofi.svelte';
   import * as meta from '../server/meta.json';
 </script>
 

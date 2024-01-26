@@ -4,7 +4,7 @@
 
 <script>
   import Layout from '@components/layout.svelte';
-  import IconRSS from '@components/icon/rss.svelte';
+  import IconRSS from '@components/icons/rss.svelte';
   import {Button, Container} from '@components/patchwork.js';
   import * as meta from '../server/meta.json';
 

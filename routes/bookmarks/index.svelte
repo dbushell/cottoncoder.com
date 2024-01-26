@@ -21,7 +21,7 @@
   import {getContext} from 'svelte';
   import Layout from '@components/layout.svelte';
   import Bookmark from '@components/bookmark.svelte';
-  import FormBookmark from '@components/form/bookmark.svelte';
+  import FormBookmark from '@components/forms/bookmark.svelte';
   import {Container} from '@components/patchwork.js';
 
   const {bookmark} = getContext('publicData');

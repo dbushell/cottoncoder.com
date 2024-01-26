@@ -24,8 +24,8 @@
   import Hero from '@components/hero.svelte';
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
-  import FormLogout from '@components/form/logout.svelte';
-  import IconBookmark from '@components/icon/bookmark.svelte';
+  import FormLogout from '@components/forms/logout.svelte';
+  import IconBookmark from '@components/icons/bookmark.svelte';
   import {Container, Button} from '@components/patchwork.js';
 
   const {admin, pageIndex, pageLength, bookmarks} = getContext('serverData');

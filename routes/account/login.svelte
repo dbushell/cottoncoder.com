@@ -16,8 +16,8 @@
   import {getContext} from 'svelte';
   import Layout from '@components/layout.svelte';
   import Redirect from '@components/redirect.svelte';
-  import FormLogin from '@components/form/login.svelte';
-  import FormLogout from '@components/form/logout.svelte';
+  import FormLogin from '@components/forms/login.svelte';
+  import FormLogout from '@components/forms/logout.svelte';
   import {Container} from '@components/patchwork.js';
   import * as meta from '../../server/meta.json';
 

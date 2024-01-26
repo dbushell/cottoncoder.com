@@ -2,9 +2,9 @@
   import Island from '@dinossr/island';
   import {onMount} from 'svelte';
   import {Header, Button} from '@components/patchwork.js';
-  import IconRSS from '@components/icon/rss.svelte';
-  import IconSun from '@components/icon/sun.svelte';
-  import IconMoon from '@components/icon/moon.svelte';
+  import IconRSS from '@components/icons/rss.svelte';
+  import IconSun from '@components/icons/sun.svelte';
+  import IconMoon from '@components/icons/moon.svelte';
   import * as meta from '../server/meta.json';
 
   let theme = '';
