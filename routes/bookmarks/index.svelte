@@ -20,7 +20,7 @@
 <script>
   import {getContext} from 'svelte';
   import Layout from '@components/layout.svelte';
-  import Bookmark from '@components/bookmark.svelte';
+  import Bookmark from '@components/bookmark-island.svelte';
   import FormBookmark from '@components/forms/bookmark.svelte';
   import {Container} from '@components/patchwork.js';
 

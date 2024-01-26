@@ -8,7 +8,7 @@
 </script>
 
 <script>
-  import {getContext} from 'svelte';
+  import {getContext, onMount} from 'svelte';
 
   export let id;
   export let hash;
@@ -17,7 +17,30 @@
   export let title;
   export let html;
 
-  const {admin} = getContext('serverData');
+  const {admin} = getContext('serverData') ?? {};
+
+  onMount(() => {
+    window.addEventListener('storage', function (ev) {
+      if (
+        ev.storageArea !== sessionStorage ||
+        ev.key !== `/api/bookmarks/${id}/`
+      ) {
+        return;
+      }
+      try {
+        const oldData = JSON.parse(ev.oldValue);
+        const newData = JSON.parse(ev.newValue);
+        if (oldData.url !== newData.url) {
+          url = newData.url;
+        }
+        if (oldData.title !== newData.title) {
+          title = newData.title;
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
 </script>
 
 <article id="bookmark-{hash}">

@@ -24,8 +24,20 @@
   };
 
   const updateStorage = () => {
-    if (id !== 'new') return;
-    localStorage.setItem(action, JSON.stringify({url, title, markdown}));
+    const storageArea =
+      window[id === 'new' ? 'localStorage' : 'sessionStorage'];
+    const key = action;
+    const oldValue = storageArea.getItem(key);
+    const newValue = JSON.stringify({url, title, markdown});
+    storageArea.setItem(key, newValue);
+    window.dispatchEvent(
+      new StorageEvent('storage', {
+        storageArea,
+        key,
+        oldValue,
+        newValue
+      })
+    );
   };
 
   onMount(() => {
