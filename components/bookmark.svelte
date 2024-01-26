@@ -20,7 +20,8 @@
   const {admin} = getContext('serverData') ?? {};
 
   onMount(() => {
-    window.addEventListener('storage', function (ev) {
+    let controller;
+    window.addEventListener('storage', async (ev) => {
       if (
         ev.storageArea !== sessionStorage ||
         ev.key !== `/api/bookmarks/${id}/`
@@ -36,8 +37,19 @@
         if (oldData.title !== newData.title) {
           title = newData.title;
         }
+        if (oldData.markdown !== newData.markdown) {
+          if (controller) controller.abort();
+          controller = new AbortController();
+          const response = await fetch('/api/markdown/', {
+            method: 'POST',
+            headers: {'content-type': 'text/plain'},
+            signal: controller.signal,
+            body: newData.markdown
+          });
+          html = await response.text();
+        }
       } catch (err) {
-        console.error(err);
+        console.debug(err);
       }
     });
   });

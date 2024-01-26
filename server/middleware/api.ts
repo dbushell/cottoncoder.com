@@ -1,5 +1,6 @@
 import * as kv from '../data/kv.ts';
 import {redirect} from '../utils.ts';
+import {markdown} from '../data/format.ts';
 import type {DinoHandle, DinoPlatform} from 'dinossr';
 
 const getBookmark = async (id: string) => {
@@ -58,6 +59,17 @@ const getPage = async (index: number) => {
   }
 };
 
+const getMarkdownHTML = async (request: Request) => {
+  try {
+    const html = await markdown(await request.text());
+    return new Response(html, {
+      headers: {'content-type': 'text/html; charset=utf-8'}
+    });
+  } catch {
+    return new Response(null, {status: 400});
+  }
+};
+
 export const handle: DinoHandle = async (request, response, props) => {
   const url = new URL(request.url);
   if (!url.pathname.startsWith('/api/')) {
@@ -96,6 +108,15 @@ export const handle: DinoHandle = async (request, response, props) => {
   if (match) {
     const index = Number.parseInt(match.pathname.groups.index!);
     response = await getPage(index);
+  }
+
+  // Return HTML from Markdown for live bookmark preview
+  if (
+    request.method === 'POST' &&
+    url.pathname === '/api/markdown/' &&
+    props.platform.serverData.admin
+  ) {
+    response = await getMarkdownHTML(request);
   }
 
   if (response) {
