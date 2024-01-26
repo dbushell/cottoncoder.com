@@ -21,8 +21,12 @@ const setBookmark = async (
   }
   const data = await kv.getBookmark(id);
   const form = await request.formData();
+  const ajax = request.headers.get('accept')?.includes('application/json');
   if (form.get('delete') === 'on') {
     await kv.deleteBookmark(id);
+    if (ajax) {
+      return Response.json({location: '/'});
+    }
     return redirect('/');
   }
   await kv.setBookmark(
@@ -34,7 +38,11 @@ const setBookmark = async (
     },
     id
   );
-  return redirect(`/bookmarks/${id}/`);
+  const location = `/bookmarks/${id}/`;
+  if (ajax) {
+    return Response.json({location});
+  }
+  return redirect(location);
 };
 
 const getPage = async (index: number) => {

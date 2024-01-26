@@ -15,7 +15,7 @@
 
 <script>
   import Layout from '@components/layout.svelte';
-  import FormBookmark from '@components/form-bookmark.svelte';
+  import FormBookmark from '@components/form/bookmark.svelte';
   import {Container} from '@components/patchwork.js';
 </script>
 
