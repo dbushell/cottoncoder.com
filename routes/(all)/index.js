@@ -17,14 +17,23 @@ export const get = async (request, response, {platform}) => {
   }
   // Add strict security headers
   if (request.url.startsWith(Deno.env.get('ORIGIN'))) {
-    response.headers.set(
-      'strict-transport-security',
-      'max-age=63072000; includeSubDomains; preload'
-    );
+    try {
+      response.headers.set(
+        'strict-transport-security',
+        'max-age=63072000; includeSubDomains; preload'
+      );
+    } catch {
+      // Ignore immutable headers
+    }
   }
-  // Add policy to allow `data:` URIs in the stylesheet
   if (response.headers.get('content-type')?.includes('text/html')) {
-    response.headers.append('x-img-src', 'data:');
+    try {
+      // Add policy to allow `data:` URIs in the stylesheet
+      response.headers.append('x-img-src', 'data:');
+    } catch {
+      // Ignore immutable headers
+    }
+    // Add theme attribute to HTML document
     const theme = platform.cookies.get('theme')?.value;
     if (themes.includes(theme)) {
       let body = await response.text();
