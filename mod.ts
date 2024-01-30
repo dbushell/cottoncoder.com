@@ -6,6 +6,11 @@ const dinossr = new DinoServer(new URL('./', import.meta.url).pathname);
 
 await dinossr.init();
 
+dinossr.router.onError = (error, request) => {
+  console.log(request.url, error);
+  return new Response(null, {status: 500});
+};
+
 middleware(dinossr);
 
 Deno.cron('backup', '30 16 * * *', backup);
