@@ -9,24 +9,39 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title><![CDATA[{{meta.name}}]]></title>
-    <description><![CDATA[{{meta.description}}]]></description>
+    <title>{{meta.name}}</title>
+    <description>{{meta.description}}</description>
     <link>{{meta.url}}</link>
     <lastBuildDate>{{lastBuildDate}}</lastBuildDate>
     <atom:link href="{{url}}" rel="self" type="application/rss+xml"/>
-    <language><![CDATA[en-GB]]></language>
+    <language>en-GB</language>
 {{entries}}</channel>
 </rss>
 `;
 
   const entry = `<item>
-  <title><![CDATA[{{title}}]]></title>
-  <description><![CDATA[{{description}}]]></description>
+  <title>{{title}}</title>
+  <description>{{description}}</description>
   <link>{{link}}</link>
   <guid isPermaLink="true">{{guid}}</guid>
   <pubDate>{{pubDate}}</pubDate>
 </item>
 `;
+
+  const striptags = (html) => {
+    const regex = /<([\w]+?)[^>]*?>(.*?)<\/\1>/s;
+    if (regex.test(html)) {
+      html = html.replace(regex, (...args) => {
+        if (args[1] === 'q') {
+          return `“${args[2]}”`;
+        } else {
+          return args[2];
+        }
+      });
+      html = striptags(html);
+    }
+    return html;
+  };
 
   const replace = (subject, search, replace = '', all = false) => {
     let parts = subject.split(search);
@@ -62,7 +77,7 @@
     const entries = bookmarks.map((bookmark) => {
       let xml = entry;
       let html = bookmark.html;
-      html += `<p><a href="${meta.url}"><b>${url.hostname}</b></a></p>`;
+      html = striptags(html);
       const pubDate = new Date(bookmark.date).toUTCString();
       const guid = new URL(meta.url);
       guid.pathname = `/bookmarks/${bookmark.id}/`;

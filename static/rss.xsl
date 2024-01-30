@@ -34,7 +34,7 @@
                   <xsl:value-of select="title"/>
                 </a>
               </h3>
-              <xsl:value-of select="description" disable-output-escaping="yes"/>
+              <p><xsl:value-of select="description"/></p>
               <p>
                 <small>Published: <time><xsl:value-of select="pubDate"/></time></small>
               </p>
