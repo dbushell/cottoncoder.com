@@ -1,18 +1,19 @@
+<script context="module">
+  export const island = true;
+</script>
+
 <script>
-  import Island from '@dinossr/island';
   import {Hero} from '@components/patchwork.js';
   import * as meta from '../server/meta.json';
 </script>
 
-<Island props={$$props}>
-  <Hero heading={meta.name} description={meta.description} {...$$props}>
-    <svelte:fragment slot="intro">
-      <div class="Hero__intro">
-        <p>{@html meta.descriptionHTML}</p>
-      </div>
-    </svelte:fragment>
-  </Hero>
-</Island>
+<Hero heading={meta.name} description={meta.description} {...$$props}>
+  <svelte:fragment slot="intro">
+    <div class="Hero__intro">
+      <p>{@html meta.descriptionHTML}</p>
+    </div>
+  </svelte:fragment>
+</Hero>
 
 <style>
   :global(.Hero) {

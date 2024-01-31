@@ -1,5 +1,8 @@
+<script context="module">
+  export const island = true;
+</script>
+
 <script>
-  import Island from '@dinossr/island';
   import {onMount} from 'svelte';
   import {Button, Checkbox, Field} from '@components/patchwork.js';
 
@@ -81,52 +84,50 @@
   };
 </script>
 
-<Island props={$$props}>
-  <form class="Stack Stack--small" method="POST" {action} on:submit={onSubmit}>
-    <label class="p" for="bookmark-title">Title</label>
-    <Field
-      required
-      id="bookmark-title"
-      name="title"
-      value={title ?? ''}
-      on:input={onInputTitle}
-    />
-    <label class="p" for="bookmark-url">URL</label>
-    <Field
-      required
-      id="bookmark-url"
-      name="url"
-      type="url"
-      value={url ?? ''}
-      on:input={onInputURL}
-    />
-    <label class="p" for="bookmark-date">Date</label>
-    <input
-      class="Field"
-      id="bookmark-date"
-      name="date"
-      type="datetime-local"
-      step="any"
-      value={date ?? ''}
-    />
-    <label class="hidden" for="bookmark-markdown">Markdown</label>
-    <textarea
-      required
-      id="bookmark-markdown"
-      class="Field"
-      rows="8"
-      name="markdown"
-      value={markdown ?? ''}
-      on:input={onInputMarkdown}
-    />
-    <div class="flex gap-s ai-center jc-between">
-      <Button type="submit" label="Save Bookmark" />
-      {#if id !== 'new'}
-        <Checkbox label="Delete" name="delete" />
-      {/if}
-    </div>
-  </form>
-</Island>
+<form class="Stack Stack--small" method="POST" {action} on:submit={onSubmit}>
+  <label class="p" for="bookmark-title">Title</label>
+  <Field
+    required
+    id="bookmark-title"
+    name="title"
+    value={title ?? ''}
+    on:input={onInputTitle}
+  />
+  <label class="p" for="bookmark-url">URL</label>
+  <Field
+    required
+    id="bookmark-url"
+    name="url"
+    type="url"
+    value={url ?? ''}
+    on:input={onInputURL}
+  />
+  <label class="p" for="bookmark-date">Date</label>
+  <input
+    class="Field"
+    id="bookmark-date"
+    name="date"
+    type="datetime-local"
+    step="any"
+    value={date ?? ''}
+  />
+  <label class="hidden" for="bookmark-markdown">Markdown</label>
+  <textarea
+    required
+    id="bookmark-markdown"
+    class="Field"
+    rows="8"
+    name="markdown"
+    value={markdown ?? ''}
+    on:input={onInputMarkdown}
+  />
+  <div class="flex gap-s ai-center jc-between">
+    <Button type="submit" label="Save Bookmark" />
+    {#if id !== 'new'}
+      <Checkbox label="Delete" name="delete" />
+    {/if}
+  </div>
+</form>
 
 <style>
   form {

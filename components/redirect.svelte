@@ -1,5 +1,8 @@
+<script context="module">
+  export const island = true;
+</script>
+
 <script>
-  import Island from '@dinossr/island';
   import {onMount} from 'svelte';
 
   export let pathname;
@@ -9,8 +12,6 @@
   });
 </script>
 
-<Island props={$$props}>
-  <p>
-    <a href={pathname}>Continue</a> if you are not automatically redirected...
-  </p>
-</Island>
+<p>
+  <a href={pathname}>Continue</a> if you are not automatically redirected...
+</p>

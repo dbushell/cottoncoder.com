@@ -1,5 +1,8 @@
+<script context="module">
+  export const island = true;
+</script>
+
 <script>
-  import Island from '@dinossr/island';
   import {onMount} from 'svelte';
   import {Header, Button} from '@components/patchwork.js';
   import IconRSS from '@components/icons/rss.svelte';
@@ -39,41 +42,39 @@
   });
 </script>
 
-<Island>
-  <Header heading={meta.name} tag={meta.tag}>
-    <svelte:fragment slot="secondary">
-      <div class="Header__theme | flex gap-xs">
-        <div class="Button-group">
-          <Button
-            small
-            label="Light"
-            disabled={theme === 'light'}
-            on:click={() => onTheme('light')}
-          >
-            <IconSun slot="icon" />
-          </Button>
-          <Button
-            small
-            label="Dark"
-            disabled={theme === 'dark'}
-            on:click={() => onTheme('dark')}
-          >
-            <IconMoon slot="icon" />
-          </Button>
-        </div>
+<Header heading={meta.name} tag={meta.tag}>
+  <svelte:fragment slot="secondary">
+    <div class="Header__theme | flex gap-xs">
+      <div class="Button-group">
         <Button
-          icon
           small
-          label="RSS Feed"
-          href="/rss.xml"
-          attr={{target: '_blank'}}
+          label="Light"
+          disabled={theme === 'light'}
+          on:click={() => onTheme('light')}
         >
-          <IconRSS slot="icon" />
+          <IconSun slot="icon" />
         </Button>
-      </div></svelte:fragment
-    >
-  </Header>
-</Island>
+        <Button
+          small
+          label="Dark"
+          disabled={theme === 'dark'}
+          on:click={() => onTheme('dark')}
+        >
+          <IconMoon slot="icon" />
+        </Button>
+      </div>
+      <Button
+        icon
+        small
+        label="RSS Feed"
+        href="/rss.xml"
+        attr={{target: '_blank'}}
+      >
+        <IconRSS slot="icon" />
+      </Button>
+    </div></svelte:fragment
+  >
+</Header>
 
 <style>
   :global(.Header__logo) {
