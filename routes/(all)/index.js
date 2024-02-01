@@ -4,7 +4,7 @@ export const pattern = '/*';
 // After all other routes
 export const order = 999;
 
-import {redirect} from '../../server/utils.ts';
+import {redirect} from '../../server/shared.ts';
 
 const themes = ['light', 'dark'];
 

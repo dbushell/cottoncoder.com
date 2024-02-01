@@ -1,4 +1,8 @@
+import {default as MurmurHash3} from 'murmurhash';
 import {encodeBase64, decodeBase64} from 'base64';
+
+export const hash = (value: string) =>
+  new MurmurHash3(value).result().toString(16);
 
 export const sha256Hash = (value: string): Promise<ArrayBuffer> =>
   crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));

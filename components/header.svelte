@@ -8,7 +8,7 @@
   import IconRSS from '@components/icons/rss.svelte';
   import IconSun from '@components/icons/sun.svelte';
   import IconMoon from '@components/icons/moon.svelte';
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 
   let theme = '';
 

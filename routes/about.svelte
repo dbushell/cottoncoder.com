@@ -6,7 +6,7 @@
   import Layout from '@components/layout.svelte';
   import IconRSS from '@components/icons/rss.svelte';
   import {Button, Container} from '@components/patchwork.js';
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 
   const heading = 'About';
   const title = `${heading} ${meta.emoji} ${meta.name}`;

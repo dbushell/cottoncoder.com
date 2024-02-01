@@ -2,7 +2,7 @@
   import {Button, Footer} from '@components/patchwork.js';
   import Header from '@components/header.svelte';
   import IconRSS from '@components/icons/rss.svelte';
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 
   export let title = `${meta.name} ${meta.emoji}`;
 </script>

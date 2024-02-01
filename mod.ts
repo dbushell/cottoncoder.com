@@ -1,6 +1,6 @@
 import {DinoSsr} from 'dinossr';
-import {middleware} from './server/mod.ts';
-import {backup} from './server/data/backup.ts';
+import * as auth from './server/auth.ts';
+import {backup} from './server/backup.ts';
 
 const dinossr = new DinoSsr(new URL('./', import.meta.url).pathname);
 
@@ -11,6 +11,6 @@ dinossr.router.onError = (error, request) => {
   return new Response(null, {status: 500});
 };
 
-middleware(dinossr);
+dinossr.router.use(auth.handle);
 
 Deno.cron('backup', '30 16 * * *', backup);

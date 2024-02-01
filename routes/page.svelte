@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '/:page(\\d+)/';
 
-  import {redirect} from '@server/utils.ts';
+  import {redirect} from '@server/shared.ts';
 
   export const load = async ({params, request, fetch, serverData}) => {
     try {
@@ -36,7 +36,7 @@
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
   import {Container} from '@components/patchwork.js';
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 
   const {pageIndex, pageLength, bookmarks} = getContext('serverData');
 

@@ -1,9 +1,5 @@
-import {default as MurmurHash3} from 'murmurhash';
 import {marked} from 'marked';
 import {markedSmartypants} from 'marked-smartypants';
-
-export const hash = (value: string) =>
-  new MurmurHash3(value).result().toString(16);
 
 marked.use({
   silent: true

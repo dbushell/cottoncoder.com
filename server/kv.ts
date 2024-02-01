@@ -1,6 +1,7 @@
 import {uuidv7} from 'uuidv7';
-import * as format from './format.ts';
-import type {BookmarkValue, Bookmark} from '../types.ts';
+import {hash} from './secret.ts';
+import {markdown} from './markdown.ts';
+import type {BookmarkValue, Bookmark} from './types.ts';
 
 // Number of bookmarks per page
 export const BOOKMARK_LIMIT = 10;
@@ -23,8 +24,8 @@ export const getBookmark = async (id: string) => {
   if (!item.value) return;
   const bookmark: Bookmark = {
     id,
-    hash: format.hash(id),
-    html: await format.markdown(item.value.markdown),
+    hash: hash(id),
+    html: await markdown(item.value.markdown),
     ...item.value
   };
   return bookmark;
@@ -81,8 +82,8 @@ export const getFormattedBookmarks = async (cursor?: string) => {
     const bookmark: Bookmark = {
       ...item.value,
       id,
-      hash: format.hash(id),
-      html: await format.markdown(item.value.markdown)
+      hash: hash(id),
+      html: await markdown(item.value.markdown)
     };
     bookmarks.push(bookmark);
   }

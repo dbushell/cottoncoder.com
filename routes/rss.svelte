@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '.xml';
 
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 
   const url = new URL('/rss.xml', meta.url);
 

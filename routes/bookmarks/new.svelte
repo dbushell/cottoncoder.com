@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '/';
 
-  import {redirect} from '@server/utils.ts';
+  import {redirect} from '@server/shared.ts';
 
   export const load = async ({serverData}) => {
     if (serverData.admin !== true) {

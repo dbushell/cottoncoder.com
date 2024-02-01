@@ -7,3 +7,13 @@ export const redirect = (location: string | URL, status = 302) => {
     }
   });
 };
+
+export const authorized = (request: Request) => {
+  if (
+    request.method === 'GET' &&
+    request.headers.get('authorization') ===
+      `Bearer ${Deno.env.get('CC_API_KEY')}`
+  ) {
+    return true;
+  }
+};

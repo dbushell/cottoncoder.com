@@ -4,7 +4,7 @@
 
 <script>
   import {Hero} from '@components/patchwork.js';
-  import * as meta from '../server/meta.json';
+  import * as meta from '@server/meta.json';
 </script>
 
 <Hero heading={meta.name} description={meta.description} {...$$props}>
