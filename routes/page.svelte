@@ -1,11 +1,13 @@
 <script context="module">
   export const pattern = '/:page(\\d+)/';
 
+  import {redirect} from '@server/utils.ts';
+
   export const load = async ({params, request, fetch, serverData}) => {
     try {
       const page = Number.parseInt(params.page) - 1;
       if (page <= 0) {
-        return Response.redirect(new URL('/', request.url), 307);
+        return redirect(new URL('/', request.url), 307);
       }
       const response = await fetch(`/api/bookmarks/page/${page}/`, {
         headers: {
@@ -13,7 +15,7 @@
         }
       });
       if (!response.ok) {
-        return Response.redirect(new URL('/', request.url), 307);
+        return redirect(new URL('/', request.url), 307);
       }
       const data = await response.json();
       serverData.pageIndex = data.index;

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
+      "@server/*": ["./server/*"],
       "@components/*": ["./components/*"]
     },
     "moduleResolution": "bundler",

@@ -1,14 +1,11 @@
 <script context="module">
   export const pattern = '/';
 
+  import {redirect} from '@server/utils.ts';
+
   export const load = async ({serverData}) => {
     if (serverData.admin !== true) {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          Location: '/account/login/'
-        }
-      });
+      return redirect('/account/login/');
     }
   };
 </script>
