@@ -17,3 +17,30 @@ export const authorized = (request: Request) => {
     return true;
   }
 };
+
+export const striptags = (html: string) => {
+  const regex = /<([\w]+?)[^>]*?>(.*?)<\/\1>/s;
+  if (regex.test(html)) {
+    html = html.replace(regex, (...args) => {
+      if (args[1] === 'q') {
+        return `“${args[2]}”`;
+      } else {
+        return args[2];
+      }
+    });
+    html = striptags(html);
+  }
+  return html;
+};
+
+export const replace = (
+  subject: string,
+  search: string,
+  replace = '',
+  all = false
+) => {
+  let parts = subject.split(search);
+  if (parts.length === 1) return subject;
+  if (!all) parts = [parts.shift()!, parts.join(search)];
+  return parts.join(replace);
+};

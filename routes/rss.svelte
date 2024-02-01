@@ -2,6 +2,7 @@
   export const pattern = '.xml';
 
   import * as meta from '@server/meta.json';
+  import {striptags, replace} from '@server/shared.ts';
 
   const url = new URL('/rss.xml', meta.url);
 
@@ -27,28 +28,6 @@
   <pubDate>{{pubDate}}</pubDate>
 </item>
 `;
-
-  const striptags = (html) => {
-    const regex = /<([\w]+?)[^>]*?>(.*?)<\/\1>/s;
-    if (regex.test(html)) {
-      html = html.replace(regex, (...args) => {
-        if (args[1] === 'q') {
-          return `“${args[2]}”`;
-        } else {
-          return args[2];
-        }
-      });
-      html = striptags(html);
-    }
-    return html;
-  };
-
-  const replace = (subject, search, replace = '', all = false) => {
-    let parts = subject.split(search);
-    if (parts.length === 1) return subject;
-    if (!all) parts = [parts.shift(), parts.join(search)];
-    return parts.join(replace);
-  };
 
   export const load = async ({fetch, serverData}) => {
     const response = await fetch(`/api/bookmarks/page/0/`, {
