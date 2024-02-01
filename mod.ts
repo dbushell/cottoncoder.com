@@ -1,8 +1,8 @@
-import {DinoServer} from 'dinossr';
+import {DinoSsr} from 'dinossr';
 import {middleware} from './server/mod.ts';
 import {backup} from './server/data/backup.ts';
 
-const dinossr = new DinoServer(new URL('./', import.meta.url).pathname);
+const dinossr = new DinoSsr(new URL('./', import.meta.url).pathname);
 
 await dinossr.init();
 

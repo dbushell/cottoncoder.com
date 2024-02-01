@@ -1,14 +1,14 @@
 {
   "imports": {
-    "dinossr": "https://raw.githubusercontent.com/dbushell/dinossr/v0.14.2/mod.ts",
+    "dinossr": "https://raw.githubusercontent.com/dbushell/dinossr/v0.16.0/mod.ts",
     "carriageway": "https://deno.land/x/carriageway@v0.8.1/mod.ts",
-    "path": "https://deno.land/std@0.212.0/path/mod.ts",
-    "uuid": "https://deno.land/std@0.212.0/uuid/mod.ts",
-    "base64": "https://deno.land/std@0.212.0/encoding/base64.ts",
-    "debounce": "https://deno.land/std@0.212.0/async/debounce.ts",
+    "path": "https://deno.land/std@0.214.0/path/mod.ts",
+    "uuid": "https://deno.land/std@0.214.0/uuid/mod.ts",
+    "base64": "https://deno.land/std@0.214.0/encoding/base64.ts",
+    "debounce": "https://deno.land/std@0.214.0/async/debounce.ts",
     "murmurhash": "https://deno.land/x/murmurhash@v1.0.0/mod.ts",
     "uuidv7": "https://unpkg.com/uuidv7@0.6.3/dist/index.js",
-    "marked": "npm:marked@11.1.1",
+    "marked": "npm:marked@11.2.0",
     "marked-smartypants": "npm:marked-smartypants@1.1.5"
   }
 }
