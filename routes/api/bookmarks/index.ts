@@ -5,7 +5,7 @@ import type {DinoHandle} from 'dinossr';
 export const pattern =
   '/:id([a-f\\d]{8}-[a-f\\d]{4}-7[a-f\\d]{3}-[a-f\\d]{4}-[a-f\\d]{12})/';
 
-export const get: DinoHandle = async (request, _res, {match}) => {
+export const get: DinoHandle = async ({request, match}) => {
   if (!authorized(request)) {
     return new Response(null, {status: 401});
   }
@@ -16,7 +16,7 @@ export const get: DinoHandle = async (request, _res, {match}) => {
   }
 };
 
-export const post: DinoHandle = async (request, _res, {match, platform}) => {
+export const post: DinoHandle = async ({request, match, platform}) => {
   if (!platform.serverData.admin) {
     return new Response(null, {status: 401});
   }

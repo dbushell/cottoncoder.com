@@ -1,14 +1,15 @@
+import {redirect} from '../../server/shared.ts';
+import type {DinoHandle} from 'dinossr';
+
 // Match all routes
 export const pattern = '/*';
 
 // After all other routes
 export const order = 999;
 
-import {redirect} from '../../server/shared.ts';
-
 const themes = ['light', 'dark'];
 
-export const get = async (request, response, {platform}) => {
+export const get: DinoHandle = async ({request, response, platform}) => {
   const url = new URL(request.url);
   // Redirect to RSS feed
   if (/^\/(rss|feed)\/?$/.test(url.pathname)) {
@@ -18,7 +19,7 @@ export const get = async (request, response, {platform}) => {
     return response;
   }
   // Add strict security headers
-  if (request.url.startsWith(Deno.env.get('ORIGIN'))) {
+  if (request.url.startsWith(Deno.env.get('ORIGIN')!)) {
     try {
       response.headers.set(
         'strict-transport-security',
@@ -37,7 +38,7 @@ export const get = async (request, response, {platform}) => {
     }
     // Add theme attribute to HTML document
     const theme = platform.cookies.get('theme')?.value;
-    if (themes.includes(theme)) {
+    if (themes.includes(theme!)) {
       let body = await response.text();
       body = body.replace(/<html([^>]+?)>/, `<html$1 data-theme="${theme}">`);
       response = new Response(body, response);

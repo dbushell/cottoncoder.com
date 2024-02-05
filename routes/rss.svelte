@@ -39,7 +39,7 @@
     serverData.bookmarks = data.bookmarks;
   };
 
-  export const get = async (_req, _res, {platform}) => {
+  export const get = async ({platform}) => {
     const {bookmarks} = platform.serverData;
 
     let body = template;

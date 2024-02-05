@@ -3,7 +3,7 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const post: DinoHandle = async (request, _res, {platform}) => {
+export const post: DinoHandle = async ({request, platform}) => {
   if (!platform.serverData.admin) {
     return new Response(null, {status: 401});
   }

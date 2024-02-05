@@ -1,6 +1,8 @@
+import type {DinoHandle} from 'dinossr';
+
 export const pattern = '.js';
 
-export const get = async (_req, response, {platform}) => {
+export const get: DinoHandle = async ({response, platform}) => {
   if (!(response instanceof Response)) {
     return response;
   }

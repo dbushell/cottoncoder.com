@@ -3,7 +3,7 @@
 
   import {redirect} from '@server/shared.ts';
 
-  export const load = async ({params, request, fetch, serverData}) => {
+  export const load = async ({request, params, fetch, serverData}) => {
     try {
       const page = Number.parseInt(params.page) - 1;
       if (page <= 0) {

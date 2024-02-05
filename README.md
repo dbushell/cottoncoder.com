@@ -4,6 +4,8 @@
 
 The curated [bookmark blog](https://cottoncoder.com/about/) of web dev curiosities.
 
+Built with [DinoSsr](https://ssr.rocks/).
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://dbushell.com/tip/)
 
 * * *

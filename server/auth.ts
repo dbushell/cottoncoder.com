@@ -88,16 +88,16 @@ const githubUser = async (platform: DinoPlatform) => {
   }
 };
 
-export const handle: DinoHandle = async (request, response, props) => {
+export const handle: DinoHandle = async ({request, response, platform}) => {
   const url = new URL(request.url);
   if (!url.pathname.startsWith('/auth/')) {
     // Check if user is logged in
     try {
-      await githubUser(props.platform);
+      await githubUser(platform);
       // @ts-ignore - TODO: fix types
-      const id = props.platform?.serverData.user?.id;
+      const id = platform.serverData.user?.id;
       if (ADMIN_IDS.includes(String(id))) {
-        props.platform.serverData.admin = true;
+        platform.serverData.admin = true;
       }
     } catch {
       // Ignore...

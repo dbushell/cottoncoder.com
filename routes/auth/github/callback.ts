@@ -8,14 +8,14 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const get: DinoHandle = async (request, _res, props) => {
+export const get: DinoHandle = async ({request, platform}) => {
   const url = new URL(request.url);
   if (url.searchParams.has('error')) {
     return redirect('/account/login/?error=denied');
   }
   // Validate state key
   const state = url.searchParams.get('state') ?? '';
-  const stateKey = props.platform.cookies.get('state')?.value ?? '';
+  const stateKey = platform.cookies.get('state')?.value ?? '';
   if (!v4.validate(state) || !v4.validate(stateKey)) {
     return redirect('/account/login/?error=expired');
   }
@@ -26,7 +26,7 @@ export const get: DinoHandle = async (request, _res, props) => {
   }
   // Delete temporary state
   await kv.db.delete(['state', stateKey]);
-  props.platform.cookies.delete('state');
+  platform.cookies.delete('state');
   // Fetch access token
   try {
     const code = url.searchParams.get('code')!;
@@ -57,7 +57,7 @@ export const get: DinoHandle = async (request, _res, props) => {
     };
     const cookie = [session, password].join(':');
     await kv.db.set(['token', session], encryped, {expireIn});
-    props.platform.cookies.set('session', {
+    platform.cookies.set('session', {
       ...sessionCookie,
       value: cookie,
       expires: encryped.expires

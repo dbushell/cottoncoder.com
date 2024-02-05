@@ -1,6 +1,6 @@
 {
   "imports": {
-    "dinossr": "https://raw.githubusercontent.com/dbushell/dinossr/v0.16.1/mod.ts",
+    "dinossr": "https://raw.githubusercontent.com/dbushell/dinossr/v0.17.0/mod.ts",
     "carriageway": "https://deno.land/x/carriageway@v0.8.1/mod.ts",
     "path": "https://deno.land/std@0.214.0/path/mod.ts",
     "uuid": "https://deno.land/std@0.214.0/uuid/mod.ts",

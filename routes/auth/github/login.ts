@@ -5,14 +5,14 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const post: DinoHandle = async (request, _res, props) => {
+export const post: DinoHandle = async ({request, platform}) => {
   const stateKey = crypto.randomUUID();
   const stateValue = crypto.randomUUID();
   const expireIn = 300_000;
   // Store the state value in database
   await kv.db.set(['state', stateKey], stateValue, {expireIn});
   // Store the state key in cookie
-  props.platform.cookies.set('state', {
+  platform.cookies.set('state', {
     ...stateCookie,
     value: stateKey,
     expires: new Date(Date.now() + expireIn)

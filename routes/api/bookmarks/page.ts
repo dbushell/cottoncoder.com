@@ -4,7 +4,7 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/:index(\\d+)/';
 
-export const get: DinoHandle = async (request, _res, {match}) => {
+export const get: DinoHandle = async ({request, match}) => {
   if (!authorized(request)) {
     return new Response(null, {status: 401});
   }
