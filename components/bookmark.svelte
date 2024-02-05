@@ -90,17 +90,19 @@
   }
 
   h3 {
+    display: inline;
     inline-size: fit-content;
     position: relative;
   }
 
   h3::after {
+    --size: clamp(1rem, calc(var(--font-size) * 0.5), 2rem);
     aspect-ratio: 1 / 1;
     background: currentColor;
     content: '';
     display: block;
-    inline-size: clamp(1rem, calc(var(--font-size) * 0.5), 2rem);
-    inset-block-start: 10%;
+    inline-size: var(--size);
+    inset-block-end: calc((var(--font-size) * 1.2) - (var(--size) + 5%));
     inset-inline-start: calc(100% + var(--space-2xs));
     mask: var(--bookmark) center center / 100% auto no-repeat;
     position: absolute;
