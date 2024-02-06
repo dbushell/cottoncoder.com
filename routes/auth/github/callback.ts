@@ -1,9 +1,9 @@
 import {v4} from 'uuid';
-import * as kv from '../../../server/kv.ts';
-import * as secret from '../../../server/secret.ts';
-import {redirect} from '../../../server/shared.ts';
-import {sessionCookie} from '../../../server/auth.ts';
-import type {EncryptedValue, GitHubToken} from '../../../server/types.ts';
+import * as kv from '@server/kv.ts';
+import * as secret from '@server/secret.ts';
+import {redirect} from '@server/shared.ts';
+import {sessionCookie} from '@server/auth.ts';
+import type {EncryptedValue, GitHubToken} from '@server/types.ts';
 import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';

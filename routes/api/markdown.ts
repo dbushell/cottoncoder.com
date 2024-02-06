@@ -1,4 +1,4 @@
-import {markdown} from '../../server/markdown.ts';
+import {markdown} from '@server/markdown.ts';
 import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';

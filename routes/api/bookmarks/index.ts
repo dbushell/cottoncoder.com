@@ -1,5 +1,5 @@
-import * as kv from '../../../server/kv.ts';
-import {authorized, redirect} from '../../../server/shared.ts';
+import * as kv from '@server/kv.ts';
+import {authorized, redirect} from '@server/shared.ts';
 import type {DinoHandle} from 'dinossr';
 
 export const pattern =

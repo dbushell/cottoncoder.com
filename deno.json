@@ -9,6 +9,8 @@
     "murmurhash": "https://deno.land/x/murmurhash@v1.0.0/mod.ts",
     "uuidv7": "https://unpkg.com/uuidv7@0.6.3/dist/index.js",
     "marked": "npm:marked@11.2.0",
-    "marked-smartypants": "npm:marked-smartypants@1.1.5"
+    "marked-smartypants": "npm:marked-smartypants@1.1.5",
+    "@components/": "./components/",
+    "@server/": "./server/"
   }
 }

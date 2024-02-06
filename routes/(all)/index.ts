@@ -1,4 +1,4 @@
-import {redirect} from '../../server/shared.ts';
+import {redirect} from '@server/shared.ts';
 import type {DinoHandle} from 'dinossr';
 
 // Match all routes

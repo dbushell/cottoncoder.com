@@ -1,6 +1,6 @@
-import * as kv from '../../../server/kv.ts';
-import {redirect} from '../../../server/shared.ts';
-import {stateCookie} from '../../../server/auth.ts';
+import * as kv from '@server/kv.ts';
+import {redirect} from '@server/shared.ts';
+import {stateCookie} from '@server/auth.ts';
 import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
