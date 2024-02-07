@@ -13,7 +13,7 @@
 <script>
   import Layout from '@components/layout.svelte';
   import FormBookmark from '@components/forms/bookmark.svelte';
-  import {Container} from '@components/patchwork.js';
+  import {Container} from '@components/patchwork.ts';
 </script>
 
 <Layout>

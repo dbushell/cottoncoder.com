@@ -26,7 +26,7 @@
   import Pagination from '@components/pagination.svelte';
   import FormLogout from '@components/forms/logout.svelte';
   import IconBookmark from '@components/icons/bookmark.svelte';
-  import {Container, Button} from '@components/patchwork.js';
+  import {Container, Button} from '@components/patchwork.ts';
 
   const {admin, pageIndex, pageLength, bookmarks} = getContext('serverData');
 </script>

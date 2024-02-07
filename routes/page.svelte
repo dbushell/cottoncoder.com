@@ -35,7 +35,7 @@
   import Hero from '@components/hero.svelte';
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
-  import {Container} from '@components/patchwork.js';
+  import {Container} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 
   const {pageIndex, pageLength, bookmarks} = getContext('serverData');

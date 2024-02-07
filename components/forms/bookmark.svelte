@@ -4,7 +4,7 @@
 
 <script>
   import {onMount} from 'svelte';
-  import {Button, Checkbox, Field} from '@components/patchwork.js';
+  import {Button, Checkbox, Field} from '@components/patchwork.ts';
 
   export let id = 'new';
   export let date = '';

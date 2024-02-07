@@ -1,5 +1,5 @@
 <script>
-  import {Button} from '@components/patchwork.js';
+  import {Button} from '@components/patchwork.ts';
   import IconKofi from '@components/icons/kofi.svelte';
   import * as meta from '@server/meta.json';
 </script>

@@ -3,7 +3,7 @@
 </script>
 
 <script>
-  import {Hero} from '@components/patchwork.js';
+  import {Hero} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 </script>
 

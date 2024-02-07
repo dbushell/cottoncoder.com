@@ -4,7 +4,7 @@
 
 <script>
   import {onMount} from 'svelte';
-  import {Header, Button} from '@components/patchwork.js';
+  import {Header, Button} from '@components/patchwork.ts';
   import IconRSS from '@components/icons/rss.svelte';
   import IconSun from '@components/icons/sun.svelte';
   import IconMoon from '@components/icons/moon.svelte';

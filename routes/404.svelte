@@ -1,6 +1,6 @@
 <script>
   import Layout from '@components/layout.svelte';
-  import {Container} from '@components/patchwork.js';
+  import {Container} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 
   const heading = '404 Not Found';

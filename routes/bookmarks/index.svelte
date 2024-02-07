@@ -22,7 +22,7 @@
   import Layout from '@components/layout.svelte';
   import Bookmark from '@components/bookmark-island.svelte';
   import FormBookmark from '@components/forms/bookmark.svelte';
-  import {Container} from '@components/patchwork.js';
+  import {Container} from '@components/patchwork.ts';
 
   const {bookmark} = getContext('publicData');
   const {admin} = getContext('serverData');

@@ -18,7 +18,7 @@
   import Redirect from '@components/redirect.svelte';
   import FormLogin from '@components/forms/login.svelte';
   import FormLogout from '@components/forms/logout.svelte';
-  import {Container} from '@components/patchwork.js';
+  import {Container} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 
   const url = getContext('url');

@@ -1,5 +1,5 @@
 <script>
-  import {Button, Footer} from '@components/patchwork.js';
+  import {Button, Footer} from '@components/patchwork.ts';
   import Header from '@components/header.svelte';
   import IconRSS from '@components/icons/rss.svelte';
   import * as meta from '@server/meta.json';

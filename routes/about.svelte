@@ -5,7 +5,7 @@
 <script>
   import Layout from '@components/layout.svelte';
   import IconRSS from '@components/icons/rss.svelte';
-  import {Button, Container} from '@components/patchwork.js';
+  import {Button, Container} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 
   const heading = 'About';

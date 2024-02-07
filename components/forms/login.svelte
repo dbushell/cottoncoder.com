@@ -1,5 +1,5 @@
 <script>
-  import {Button} from '@components/patchwork.js';
+  import {Button} from '@components/patchwork.ts';
 </script>
 
 <form action="/auth/github/login/" method="POST">

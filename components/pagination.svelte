@@ -1,5 +1,5 @@
 <script>
-  import {Container, Button} from '@components/patchwork.js';
+  import {Container, Button} from '@components/patchwork.ts';
   import ArrowLeft from '@components/icons/arrow-left.svelte';
   import ArrowRight from '@components/icons/arrow-right.svelte';
 
