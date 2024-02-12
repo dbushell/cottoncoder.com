@@ -6,8 +6,8 @@ import type {BookmarkValue, Bookmark} from './types.ts';
 // Number of bookmarks per page
 export const BOOKMARK_LIMIT = 10;
 
-if (!Deno.env.has('DENO_KV_URL') && !Deno.env.has('DINOSSR_BUILD')) {
-  throw new Error('Missing "DENO_KV_URL" environment variable');
+if (!Deno.env.has('DENO_KV_URL')) {
+  console.warn('Missing "DENO_KV_URL" environment variable');
 }
 
 export const db = await Deno.openKv(Deno.env.get('DENO_KV_URL'));
