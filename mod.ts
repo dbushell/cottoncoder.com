@@ -13,4 +13,6 @@ dinossr.router.onError = (error, request) => {
 
 dinossr.router.use(auth.handle);
 
-Deno.cron('backup', '30 16 * * *', backup);
+if (!Deno.env.has('DENO_REGION')) {
+  Deno.cron('backup', '30 16 * * *', backup);
+}
