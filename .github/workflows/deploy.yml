@@ -29,5 +29,5 @@ jobs:
       - name: Deploy
         uses: denoland/deployctl@v1
         with:
-          project: cottoncoder-deploy
+          project: cottoncoder
           entrypoint: mod.ts
