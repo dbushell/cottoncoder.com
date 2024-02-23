@@ -1,4 +1,4 @@
-import {default as MurmurHash3} from 'murmurhash';
+import {default as MurmurHash3} from '@server/murmurhash.ts';
 import {encodeBase64, decodeBase64} from 'base64';
 
 export const hash = (value: string) =>

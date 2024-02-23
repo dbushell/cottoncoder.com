@@ -4,7 +4,7 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const post: DinoHandle = async ({platform}) => {
+export const POST: DinoHandle = async ({platform}) => {
   try {
     // Delete encrypted session data
     const cookie = platform.cookies.get('session')?.value;

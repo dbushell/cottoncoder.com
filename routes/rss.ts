@@ -29,7 +29,7 @@ const entry = `<item>
 </item>
 `;
 
-export const get = async () => {
+export const GET = async () => {
   const {bookmarks} = await kv.getFormattedPage(0);
 
   let body = template;

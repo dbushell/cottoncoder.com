@@ -50,8 +50,9 @@
   const onSubmit = async (ev) => {
     ev.preventDefault();
     const data = new FormData(ev.target);
+    const method = data.get('delete') === 'on' ? 'DELETE' : id === 'new' ? 'POST' : 'PATCH';
     const response = await fetch(action, {
-      method: 'POST',
+      method,
       body: data,
       headers: {
         accept: 'application/json'

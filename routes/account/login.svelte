@@ -1,7 +1,7 @@
 <script context="module">
   export const pattern = '/';
 
-  export const get = ({response}) => {
+  export const GET = ({response}) => {
     // Add CSP header for OAuth redirect
     // required in Safari and Chromium but not Firefox
     response.headers.append(

@@ -9,7 +9,7 @@ export const order = 999;
 
 const themes = ['light', 'dark'];
 
-export const get: DinoHandle = async ({request, response, platform}) => {
+export const GET: DinoHandle = async ({request, response, platform}) => {
   const url = new URL(request.url);
   // Redirect to RSS feed
   if (/^\/(rss|feed)\/?$/.test(url.pathname)) {

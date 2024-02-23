@@ -8,7 +8,7 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const get: DinoHandle = async ({request, platform}) => {
+export const GET: DinoHandle = async ({request, platform}) => {
   const url = new URL(request.url);
   if (url.searchParams.has('error')) {
     return redirect('/account/login/?error=denied');

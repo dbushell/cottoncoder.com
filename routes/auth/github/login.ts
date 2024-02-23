@@ -5,7 +5,7 @@ import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const post: DinoHandle = async ({request, platform}) => {
+export const POST: DinoHandle = async ({request, platform}) => {
   const stateKey = crypto.randomUUID();
   const stateValue = crypto.randomUUID();
   const expireIn = 300_000;

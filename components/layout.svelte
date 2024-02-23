@@ -64,12 +64,18 @@
   }
 
   :root[data-theme='light'] {
-    --color-pink: 55% 0.22 330;
+    --color-pink: 57.5% 0.22 330;
+    --color-primary: var(--color-blue);
+    --color-secondary: var(--color-pink);
+    --color-focus: var(--color-pink);
   }
 
   @media (prefers-color-scheme: light) {
     :root:not([data-theme]) {
-      --color-pink: 55% 0.22 330;
+      --color-pink: 57.5% 0.22 330;
+      --color-primary: var(--color-blue);
+      --color-secondary: var(--color-pink);
+      --color-focus: var(--color-pink);
     }
   }
 
