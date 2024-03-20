@@ -19,7 +19,7 @@ networks:
 services:
   denokv:
     container_name: denokv
-    image: ghcr.io/denoland/denokv
+    image: ghcr.io/denoland/denokv:0.7.0
     command: --sqlite-path /data/denokv.sqlite serve --access-token ${DENO_KV_ACCESS_TOKEN}
     restart: always
     environment:
@@ -33,7 +33,7 @@ services:
 
   deno:
     container_name: deno
-    image: denoland/deno:1.41.0
+    image: denoland/deno:1.41.3
     command: deno run --no-lock --unstable-kv --unstable-cron --allow-all /app/mod.ts
     restart: always
     depends_on:
