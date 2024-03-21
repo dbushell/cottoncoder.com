@@ -1,6 +1,6 @@
 {
   "imports": {
-    "dinossr": "jsr:@ssr/dinossr@0.28",
+    "dinossr": "jsr:@ssr/dinossr@0.29",
     "carriageway": "jsr:@dbushell/carriageway@0.12",
     "path": "jsr:@std/path@0.220",
     "uuid": "jsr:@std/uuid@0.220",
