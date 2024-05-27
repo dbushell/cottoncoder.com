@@ -1,11 +1,12 @@
+import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
 import * as kv from '@server/kv.ts';
 import {redirect} from '@server/shared.ts';
 import {stateCookie} from '@server/auth.ts';
-import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const POST: DinoHandle = async ({request, platform}) => {
+export const POST: DinoHandle<Data> = async ({request, platform}) => {
   const stateKey = crypto.randomUUID();
   const stateValue = crypto.randomUUID();
   const expireIn = 300_000;

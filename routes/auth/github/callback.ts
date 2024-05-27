@@ -1,14 +1,14 @@
+import type {DinoHandle} from 'dinossr';
+import type {Data, EncryptedValue, GitHubToken} from '@server/types.ts';
 import {v4} from 'uuid';
 import * as kv from '@server/kv.ts';
 import * as secret from '@server/secret.ts';
 import {redirect} from '@server/shared.ts';
 import {sessionCookie} from '@server/auth.ts';
-import type {EncryptedValue, GitHubToken} from '@server/types.ts';
-import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/';
 
-export const GET: DinoHandle = async ({request, platform}) => {
+export const GET: DinoHandle<Data> = async ({request, platform}) => {
   const url = new URL(request.url);
   if (url.searchParams.has('error')) {
     return redirect('/account/login/?error=denied');
@@ -30,23 +30,20 @@ export const GET: DinoHandle = async ({request, platform}) => {
   // Fetch access token
   try {
     const code = url.searchParams.get('code')!;
-    const response = await fetch(
-      'https://github.com/login/oauth/access_token',
-      {
-        method: 'POST',
-        body: new URLSearchParams({
-          client_id: Deno.env.get('GH_CLIENT_ID')!,
-          client_secret: Deno.env.get('GH_CLIENT_SECRET')!,
-          redirect_uri: new URL(`/auth/github/callback/`, request.url).href,
-          grant_type: 'authorization_code',
-          code
-        }),
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/x-www-form-urlencoded'
-        }
+    const response = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      body: new URLSearchParams({
+        client_id: Deno.env.get('GH_CLIENT_ID')!,
+        client_secret: Deno.env.get('GH_CLIENT_SECRET')!,
+        redirect_uri: new URL(`/auth/github/callback/`, request.url).href,
+        grant_type: 'authorization_code',
+        code
+      }),
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
       }
-    );
+    });
     const token: GitHubToken = await response.json();
     const session = crypto.randomUUID();
     const password = crypto.randomUUID();

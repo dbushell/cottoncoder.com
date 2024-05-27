@@ -11,8 +11,7 @@ export const redirect = (location: string | URL, status = 302) => {
 export const authorized = (request: Request) => {
   if (
     request.method === 'GET' &&
-    request.headers.get('authorization') ===
-      `Bearer ${Deno.env.get('CC_API_KEY')}`
+    request.headers.get('authorization') === `Bearer ${Deno.env.get('CC_API_KEY')}`
   ) {
     return true;
   }
@@ -33,12 +32,7 @@ export const striptags = (html: string) => {
   return html;
 };
 
-export const replace = (
-  subject: string,
-  search: string,
-  replace = '',
-  all = false
-) => {
+export const replace = (subject: string, search: string, replace = '', all = false) => {
   let parts = subject.split(search);
   if (parts.length === 1) return subject;
   if (!all) parts = [parts.shift()!, parts.join(search)];

@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   const formatDate = new Intl.DateTimeFormat('en-GB', {
     weekday: 'short',
     day: 'numeric',
@@ -7,25 +7,23 @@
   });
 </script>
 
-<script>
+<script lang="ts">
+  import type {ServerData} from '@server/types.ts';
   import {getContext, onMount} from 'svelte';
 
-  export let id;
-  export let hash;
-  export let date;
-  export let url;
-  export let title;
-  export let html;
+  export let id: string;
+  export let hash: string;
+  export let date: Date;
+  export let url: string;
+  export let title: string;
+  export let html: string;
 
-  const {admin} = getContext('serverData') ?? {};
+  const {admin} = getContext<ServerData>('serverData') ?? {};
 
   onMount(() => {
     let controller;
     window.addEventListener('storage', async (ev) => {
-      if (
-        ev.storageArea !== sessionStorage ||
-        ev.key !== `/api/bookmarks/${id}/`
-      ) {
+      if (ev.storageArea !== sessionStorage || ev.key !== `/api/bookmarks/${id}/`) {
         return;
       }
       try {
@@ -65,7 +63,7 @@
   </header>
   <div>{@html html}</div>
   <p>
-    <time datetime={date}>{formatDate.format(new Date(date))}</time>
+    <time datetime={new Date(date).toISOString()}>{formatDate.format(new Date(date))}</time>
     {#if admin}
       &ndash;
       <a href="/bookmarks/{id}/">Edit</a>
@@ -123,9 +121,7 @@
     text-decoration-line: underline;
     text-decoration-thickness: calc((2 / 16) * 1rem);
     text-decoration-skip-ink: all;
-    text-decoration-color: oklch(
-      var(--color-primary) / var(--underline-opacity)
-    );
+    text-decoration-color: oklch(var(--color-primary) / var(--underline-opacity));
     text-underline-offset: 0.15em;
     transition:
       color 200ms,

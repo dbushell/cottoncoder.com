@@ -1,3 +1,5 @@
+import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
 import * as kv from '@server/kv.ts';
 import {striptags, replace} from '@server/shared.ts';
 import meta from '@server/meta.json' with {type: 'json'};
@@ -29,16 +31,12 @@ const entry = `<item>
 </item>
 `;
 
-export const GET = async () => {
+export const GET: DinoHandle<Data> = async () => {
   const {bookmarks} = await kv.getFormattedPage(0);
 
   let body = template;
   body = replace(body, `{{url}}`, url.href);
-  body = replace(
-    body,
-    `{{lastBuildDate}}`,
-    new Date(bookmarks[0].date).toUTCString()
-  );
+  body = replace(body, `{{lastBuildDate}}`, new Date(bookmarks[0].date).toUTCString());
   for (const [key, value] of Object.entries(meta)) {
     if (typeof value === 'string') {
       body = body.replaceAll(`{{meta.${key}}}`, value);

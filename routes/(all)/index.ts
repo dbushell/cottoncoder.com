@@ -1,5 +1,6 @@
-import {redirect} from '@server/shared.ts';
 import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
+import {redirect} from '@server/shared.ts';
 
 // Match all routes
 export const pattern = '/*';
@@ -9,7 +10,7 @@ export const order = 999;
 
 const themes = ['light', 'dark'];
 
-export const GET: DinoHandle = async ({request, response, platform}) => {
+export const GET: DinoHandle<Data> = async ({request, response, platform}) => {
   const url = new URL(request.url);
   // Redirect to RSS feed
   if (/^\/(rss|feed)\/?$/.test(url.pathname)) {

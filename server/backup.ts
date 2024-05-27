@@ -1,8 +1,8 @@
+import type {BookmarkValue} from './types.ts';
 import * as path from 'path';
 import {Queue} from 'carriageway';
 import {db} from './kv.ts';
 import {hash} from './secret.ts';
-import type {BookmarkValue} from './types.ts';
 
 type BookmarkExport = BookmarkValue & {id: string};
 

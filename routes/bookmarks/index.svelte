@@ -1,7 +1,10 @@
-<script context="module">
+<script context="module" lang="ts">
+  import type {DinoLoad} from 'dinossr';
+  import type {Data} from '@server/types.ts';
+
   export const pattern = '/:id/';
 
-  export const load = async ({fetch, params, publicData}) => {
+  export const load: DinoLoad<Data> = async ({fetch, params, publicData}) => {
     try {
       const response = await fetch(`/api/bookmarks/${params.id}/`, {
         headers: {
@@ -17,15 +20,16 @@
   };
 </script>
 
-<script>
+<script lang="ts">
+  import type {PublicData, ServerData} from '@server/types.ts';
   import {getContext} from 'svelte';
+  import {Container} from '@components/patchwork.ts';
   import Layout from '@components/layout.svelte';
   import Bookmark from '@components/bookmark-island.svelte';
   import FormBookmark from '@components/forms/bookmark.svelte';
-  import {Container} from '@components/patchwork.ts';
 
-  const {bookmark} = getContext('publicData');
-  const {admin} = getContext('serverData');
+  const {bookmark} = getContext<PublicData>('publicData');
+  const {admin} = getContext<ServerData>('serverData');
 </script>
 
 <Layout>

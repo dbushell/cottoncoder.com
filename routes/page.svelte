@@ -1,9 +1,12 @@
-<script context="module">
+<script context="module" lang="ts">
+  import type {DinoLoad} from 'dinossr';
+  import type {Data} from '@server/types.ts';
+
   export const pattern = '/:page(\\d+)/';
 
   import {redirect} from '@server/shared.ts';
 
-  export const load = async ({request, params, fetch, serverData}) => {
+  export const load: DinoLoad<Data> = async ({request, params, fetch, serverData}) => {
     try {
       const page = Number.parseInt(params.page) - 1;
       if (page <= 0) {
@@ -29,16 +32,17 @@
   };
 </script>
 
-<script>
+<script lang="ts">
+  import type {ServerData} from '@server/types.ts';
   import {getContext} from 'svelte';
+  import {Container} from '@components/patchwork.ts';
   import Layout from '@components/layout.svelte';
   import Hero from '@components/hero.svelte';
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
-  import {Container} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 
-  const {pageIndex, pageLength, bookmarks} = getContext('serverData');
+  const {pageIndex, pageLength, bookmarks} = getContext<ServerData>('serverData');
 
   const heading = `Page ${pageIndex + 1}`;
   const title = `${heading} ${meta.emoji} ${meta.name}`;

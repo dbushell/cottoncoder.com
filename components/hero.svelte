@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
   export const island = true;
 </script>
 
-<script>
+<script lang="ts">
   import {Hero} from '@components/patchwork.ts';
   import * as meta from '@server/meta.json';
 </script>

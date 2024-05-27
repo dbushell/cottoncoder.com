@@ -1,10 +1,10 @@
+import type {BookmarkValue, Bookmark} from './types.ts';
 import {uuidv7} from 'uuidv7';
 import {hash} from './secret.ts';
 import {markdown} from './markdown.ts';
-import type {BookmarkValue, Bookmark} from './types.ts';
 
 // Number of bookmarks per page
-export const BOOKMARK_LIMIT = 10;
+export const BOOKMARK_LIMIT = 20;
 
 if (!Deno.env.has('DENO_KV_URL')) {
   console.warn('Missing "DENO_KV_URL" environment variable');

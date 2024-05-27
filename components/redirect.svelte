@@ -1,11 +1,11 @@
-<script context="module">
+<script context="module" lang="ts">
   export const island = true;
 </script>
 
-<script>
+<script lang="ts">
   import {onMount} from 'svelte';
 
-  export let pathname;
+  export let pathname: string;
 
   onMount(() => {
     window.location.href = pathname;

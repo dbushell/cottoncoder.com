@@ -1,13 +1,8 @@
+import type {DinoCookies, DinoHandle, DinoPlatform} from 'dinossr';
+import type {MapValueType, EncryptedValue, GitHubToken, GitHubUser} from './types.ts';
 import {v4} from 'uuid';
 import * as kv from './kv.ts';
 import * as secret from './secret.ts';
-import type {DinoCookies, DinoHandle, DinoPlatform} from 'dinossr';
-import type {
-  MapValueType,
-  EncryptedValue,
-  GitHubToken,
-  GitHubUser
-} from './types.ts';
 
 const ADMIN_IDS = Deno.env.get('GH_ADMIN_IDS')?.split(',') ?? [];
 
@@ -74,7 +69,7 @@ const githubUser = async (platform: DinoPlatform) => {
     if (!Object.hasOwn(data, 'login')) {
       throw new Error();
     }
-    const expireIn = 3_600_000;
+    const expireIn = 3_600_000 * 24 * 7;
     const encryped: EncryptedValue = {
       encrypted: await secret.encryptText(JSON.stringify(data), password),
       expires: new Date(Date.now() + expireIn)

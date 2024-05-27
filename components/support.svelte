@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {Button} from '@components/patchwork.ts';
   import IconKofi from '@components/icons/kofi.svelte';
   import * as meta from '@server/meta.json';
@@ -6,12 +6,7 @@
 
 <aside class="Alert | flex ai-center jc-between gap-m">
   <p>{meta.support.text}</p>
-  <Button
-    small
-    href={meta.support.url}
-    label={meta.support.label}
-    attr={{target: '_blank'}}
-  >
+  <Button small href={meta.support.url} label={meta.support.label} attr={{target: '_blank'}}>
     <IconKofi slot="icon" />
   </Button>
 </aside>

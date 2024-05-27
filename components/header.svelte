@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
   export const island = true;
 </script>
 
-<script>
+<script lang="ts">
   import {onMount} from 'svelte';
   import {Header, Button} from '@components/patchwork.ts';
   import IconRSS from '@components/icons/rss.svelte';
@@ -46,30 +46,14 @@
   <svelte:fragment slot="secondary">
     <div class="Header__theme | flex gap-xs">
       <div class="Button-group">
-        <Button
-          small
-          label="Light"
-          disabled={theme === 'light'}
-          on:click={() => onTheme('light')}
-        >
+        <Button small label="Light" disabled={theme === 'light'} on:click={() => onTheme('light')}>
           <IconSun slot="icon" />
         </Button>
-        <Button
-          small
-          label="Dark"
-          disabled={theme === 'dark'}
-          on:click={() => onTheme('dark')}
-        >
+        <Button small label="Dark" disabled={theme === 'dark'} on:click={() => onTheme('dark')}>
           <IconMoon slot="icon" />
         </Button>
       </div>
-      <Button
-        icon
-        small
-        label="RSS Feed"
-        href="/rss.xml"
-        attr={{target: '_blank'}}
-      >
+      <Button icon small label="RSS Feed" href="/rss.xml" attr={{target: '_blank'}}>
         <IconRSS slot="icon" />
       </Button>
     </div></svelte:fragment

@@ -1,5 +1,8 @@
-<script context="module">
-  export const load = async ({fetch, serverData}) => {
+<script context="module" lang="ts">
+  import type {DinoLoad} from 'dinossr';
+  import type {Data} from '@server/types.ts';
+
+  export const load: DinoLoad<Data> = async ({fetch, serverData}) => {
     try {
       const response = await fetch(`/api/bookmarks/page/0/`, {
         headers: {
@@ -18,17 +21,18 @@
   };
 </script>
 
-<script>
+<script lang="ts">
+  import type {ServerData} from '@server/types.ts';
   import {getContext} from 'svelte';
+  import {Container, Button} from '@components/patchwork.ts';
   import Layout from '@components/layout.svelte';
   import Hero from '@components/hero.svelte';
   import Bookmarks from '@components/bookmarks.svelte';
   import Pagination from '@components/pagination.svelte';
   import FormLogout from '@components/forms/logout.svelte';
   import IconBookmark from '@components/icons/bookmark.svelte';
-  import {Container, Button} from '@components/patchwork.ts';
 
-  const {admin, pageIndex, pageLength, bookmarks} = getContext('serverData');
+  const {admin, pageIndex, pageLength, bookmarks} = getContext<ServerData>('serverData');
 </script>
 
 <Layout>

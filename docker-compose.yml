@@ -33,7 +33,7 @@ services:
 
   deno:
     container_name: deno
-    image: denoland/deno:1.41.3
+    image: denoland/deno:1.43.6
     command: deno run --no-lock --unstable-kv --unstable-cron --allow-all /app/mod.ts
     restart: always
     depends_on:

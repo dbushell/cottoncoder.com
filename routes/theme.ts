@@ -1,10 +1,11 @@
 import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
 
 export const pattern = '/';
 
 const themes = ['light', 'dark'];
 
-export const POST: DinoHandle = async ({request, platform}) => {
+export const POST: DinoHandle<Data> = async ({request, platform}) => {
   try {
     const data = await request.json();
     if (!themes.includes(data.theme)) {

@@ -1,13 +1,13 @@
 {
   "imports": {
-    "dinossr": "jsr:@ssr/dinossr@0.29",
+    "dinossr": "jsr:@ssr/dinossr@0.31",
     "carriageway": "jsr:@dbushell/carriageway@0.12",
-    "path": "jsr:@std/path@0.220",
-    "uuid": "jsr:@std/uuid@0.220",
-    "base64": "jsr:@std/encoding@0.220/base64",
-    "debounce": "jsr:@std/async@0.220/debounce",
-    "uuidv7": "https://unpkg.com/uuidv7@0.6.3/dist/index.js",
-    "marked": "npm:marked@12.0.1",
+    "path": "jsr:@std/path@0.221",
+    "uuid": "jsr:@std/uuid@0.221",
+    "base64": "jsr:@std/encoding@0.221/base64",
+    "debounce": "jsr:@std/async@0.221/debounce",
+    "uuidv7": "npm:uuidv7@1.0.0",
+    "marked": "npm:marked@12.0.2",
     "marked-smartypants": "npm:marked-smartypants@1.1.6",
     "@components/": "./components/",
     "@server/": "./server/"

@@ -1,8 +1,9 @@
 import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
 
 export const pattern = '.js';
 
-export const GET: DinoHandle = async ({response, platform}) => {
+export const GET: DinoHandle<Data> = async ({response, platform}) => {
   if (!(response instanceof Response)) {
     return response;
   }

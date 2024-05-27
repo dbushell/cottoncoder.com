@@ -8,10 +8,7 @@ marked.use({
 marked.use({
   hooks: {
     postprocess: (html: string) => {
-      html = html.replace(
-        /(<p[^>]*?>.*?)&#8220;(.+?)&#8221;(.*?<\/p>)/g,
-        '$1<q>$2</q>$3'
-      );
+      html = html.replace(/(<p[^>]*?>.*?)&#8220;(.+?)&#8221;(.*?<\/p>)/g, '$1<q>$2</q>$3');
       return html;
     }
   }

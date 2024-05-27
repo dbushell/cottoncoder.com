@@ -1,10 +1,11 @@
+import type {DinoHandle} from 'dinossr';
+import type {Data} from '@server/types.ts';
 import * as kv from '@server/kv.ts';
 import {authorized} from '@server/shared.ts';
-import type {DinoHandle} from 'dinossr';
 
 export const pattern = '/:index(\\d+)/';
 
-export const GET: DinoHandle = async ({request, match}) => {
+export const GET: DinoHandle<Data> = async ({request, match}) => {
   if (!authorized(request)) {
     return new Response(null, {status: 401});
   }

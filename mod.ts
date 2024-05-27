@@ -1,7 +1,7 @@
+import type {DinoManifest} from 'dinossr';
 import {DinoSsr} from 'dinossr';
 import * as auth from './server/auth.ts';
 import {backup} from './server/backup.ts';
-import type {DinoManifest} from 'dinossr';
 
 const dir = new URL('./', import.meta.url).pathname;
 

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {Button, Footer} from '@components/patchwork.ts';
   import Header from '@components/header.svelte';
   import IconRSS from '@components/icons/rss.svelte';
@@ -20,13 +20,7 @@
     <svelte:fragment slot="secondary">
       <div class="flex-shrink-0 flex gap-xs">
         <Button small label="Log in" href="/account/login/" />
-        <Button
-          icon
-          small
-          label="RSS Feed"
-          href="/rss.xml"
-          attr={{target: '_blank'}}
-        >
+        <Button icon small label="RSS Feed" href="/rss.xml" attr={{target: '_blank'}}>
           <IconRSS slot="icon" />
         </Button>
       </div>
@@ -50,8 +44,7 @@
     font-weight: 300 700;
     font-style: normal;
     /* Subset for "Cotton Coder" */
-    unicode-range: U+0043, U+006F, U+0074, U+006E, U+0064, U+0065, U+0072,
-      U+0020;
+    unicode-range: U+0043, U+006F, U+0074, U+006E, U+0064, U+0065, U+0072, U+0020;
   }
 
   :root {

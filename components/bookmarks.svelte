@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
+  import type {Bookmark as BookmarkType} from '@server/types';
   import Bookmark from '@components/bookmark.svelte';
   import Support from '@components/support.svelte';
 
-  export let bookmarks;
+  export let bookmarks: Array<BookmarkType>;
 
-  const support = (i) => {
-    if (bookmarks.length <= 4) {
+  const support = (i: number) => {
+    if (bookmarks.length <= 8) {
       return i === bookmarks.length - 1;
     }
-    return i === 3;
+    return i === 7;
   };
 </script>
 

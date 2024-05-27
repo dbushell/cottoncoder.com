@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
   export const island = true;
 </script>
 
-<script>
+<script lang="ts">
   import {onMount} from 'svelte';
   import {Button, Checkbox, Field} from '@components/patchwork.ts';
 
@@ -27,8 +27,7 @@
   };
 
   const updateStorage = () => {
-    const storageArea =
-      window[id === 'new' ? 'localStorage' : 'sessionStorage'];
+    const storageArea = window[id === 'new' ? 'localStorage' : 'sessionStorage'];
     const key = action;
     const oldValue = storageArea.getItem(key);
     const newValue = JSON.stringify({url, title, markdown});
@@ -87,22 +86,9 @@
 
 <form class="Stack Stack--small" method="POST" {action} on:submit={onSubmit}>
   <label class="p" for="bookmark-title">Title</label>
-  <Field
-    required
-    id="bookmark-title"
-    name="title"
-    value={title ?? ''}
-    on:input={onInputTitle}
-  />
+  <Field required id="bookmark-title" name="title" value={title ?? ''} on:input={onInputTitle} />
   <label class="p" for="bookmark-url">URL</label>
-  <Field
-    required
-    id="bookmark-url"
-    name="url"
-    type="url"
-    value={url ?? ''}
-    on:input={onInputURL}
-  />
+  <Field required id="bookmark-url" name="url" type="url" value={url ?? ''} on:input={onInputURL} />
   <label class="p" for="bookmark-date">Date</label>
   <input
     class="Field"

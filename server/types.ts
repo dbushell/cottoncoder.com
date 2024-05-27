@@ -35,3 +35,20 @@ export interface GitHubToken {
   token_type: string;
   scope: string;
 }
+
+export type PublicData = {
+  bookmark?: Bookmark;
+};
+
+export type ServerData = {
+  admin?: boolean;
+  bookmarks?: Array<Bookmark>;
+  pageIndex?: number;
+  pageLength?: number;
+  user?: GitHubUser;
+};
+
+export type Data = {
+  publicData: PublicData;
+  serverData: ServerData;
+};
